@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
   def index
-    @message = Message.new
+    @message = Message.new #なぜ必要？？
     @room = Room.find(params[:room_id])
-    @messages = @room.messages.includes(:user)
+    @messages = @room.messages.includes(:user)#理解不足
   end
 
-  def create
+  def create 
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
     if @message.save
